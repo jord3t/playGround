@@ -23,9 +23,7 @@ class ViewController: UIViewController
             sum += number
             total++
         }
-        print(total)
-        var average: Double = Double(sum/total)
-        average =  average.roundToPlaces(2)
+        let average: Double = Double(sum/total).roundToPlaces(2)
         return "\(average) of \(total) : sum: \(sum)"
     }
     
