@@ -8,18 +8,40 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController
+{
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        updateUI()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    private func averageOf(numbers: Double...) -> String
+    {
+        var sum = 0.0
+        var total = 0.0
+        for number in numbers
+        {
+            sum += number
+            total++
+        }
+        print(total)
+        var average: Double = Double(sum/total)
+        average =  average.roundToPlaces(2)
+        return "\(average) of \(total) : sum: \(sum)"
     }
-
+    
+    private func updateUI()
+    {
+        print(averageOf(1, 5, 8))
+        print(averageOf(42, 597, 12, 22.1))
+    }
+    
 
 }
 
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundToPlaces(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return round(self * divisor) / divisor
+    }
+}
